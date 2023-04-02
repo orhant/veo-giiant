@@ -53,6 +53,9 @@ class SaveForm
         if ($commonGiiDir = \Yii::getAlias('@common/' . $giiInfoPath, false)) {
             self::buildJson($commonGiiDir, $forms, $suffix,  'common');
         }
+        if ($commonGiiDir = \Yii::getAlias('@console/models/' . $giiInfoPath, false)) {
+            self::buildJson($commonGiiDir, $forms, $suffix,  'console');
+        }
         foreach (\Yii::$app->modules as $moduleId => $module) {
             /*
              * get module base path
