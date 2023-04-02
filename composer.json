@@ -1,15 +1,15 @@
 {
-    "name": "schmunk42/yii2-giiant",
+    "name": "orhant/yii2-giiant",
     "description": "Gii CRUD generator for Yii 2 Framework",
     "keywords": ["yii2", "gii", "crud"],
-    "homepage": "https://github.com/schmunk42/yii2-giiant",
+    "homepage": "https://github.com/orhant/yii2-giiant",
     "type": "yii2-extension",
     "license": "BSD-3-Clause",
     "authors": [
         {
-            "name": "Tobias Munk",
-            "email": "schmunk@usrbin.de",
-            "homepage": "http://www.usrbin.de"
+            "name": "Orhant",
+            "email": "orhan@gmail.com",
+            
         }
     ],
     "suggest": {
