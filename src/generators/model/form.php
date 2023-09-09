@@ -12,12 +12,14 @@ use schmunk42\giiant\helpers\SaveForm;
  * on chenging listbox, form fill with selected saved forma data
  * currently work with input text, input checkbox and select form fields
  */
+
 $this->registerCssFile("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css");
 
 $this->registerJs(SaveForm::getSavedFormsJs($generator->getName(), $generator->giiInfoPath), yii\web\View::POS_END);
 $this->registerJs(SaveForm::jsFillForm(), yii\web\View::POS_END);
 echo $form->field($generator, 'savedForm')->dropDownList(
-        SaveForm::getSavedFormsListbox($generator->getName() , $generator->giiInfoPath), ['onchange' => 'fillForm(this.value)']
+    SaveForm::getSavedFormsListbox($generator->getName(), $generator->giiInfoPath),
+    ['onchange' => 'fillForm(this.value)']
 );
 
 $this->registerJs("
@@ -27,7 +29,7 @@ $this->registerJs("
         $('#generator-modelclass').val(modelClass);
     });
 
-    $('#clear-button').on('click', function() {
+    $('#clear-icon').on('click', function() {
         $('#generator-tablename').val('');
         $('#generator-modelclass').val('');
     });
@@ -45,18 +47,11 @@ $this->registerJs("
         return camelCase;
     }
 ");
- 
-?>
-<div class="input-group">
-    <?= $form->field($generator, 'tableName')->textInput(['class' => 'form-control','template' => '{beginLabel}{labelTitle}{endLabel}<div class="input-group">{input}
-            <span class="input-group-addon">%</span></div>{error}{hint}']) ?>
-    <div class="input-group-append">
-        <button type="button" id="clear-icon" class="btn btn-outline-secondary">
-            <i class="fas fa-times"></i>
-        </button>
-    </div>
-</div>
-<?php
+
+echo $form->field($generator, 'tableName', [
+    'template' => '{label}<div style="display: flex!important;"><div style="width:100%" class="pl-0 mr-auto">{input}</div><div class="pl-1"><span class="input-group-append"><button type="button" id="clear-icon" class="btn btn-outline-secondary"><i class="fas fa-times"></i></button></span>{error}</div></div>',
+    'options' => ['class' => 'form-group'],
+])->textInput(['class' => 'form-control']);
 echo $form->field($generator, 'tablePrefix');
 echo $form->field($generator, 'modelClass');
 echo $form->field($generator, 'ns');
