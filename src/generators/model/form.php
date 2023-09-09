@@ -25,13 +25,17 @@ $this->registerJs("
         $('#generator-modelclass').val(modelClass);
     });
 
+    $('#clear-button').on('click', function() {
+        $('#generator-tablename').val('');
+        $('#generator-modelclass').val('');
+    });
+
     function toCamelCase(str) {
         var camelCase = str.replace(/_./g, function(match) {
             return match.charAt(1).toUpperCase();
         });
         camelCase = camelCase.charAt(0).toUpperCase() + camelCase.slice(1);
         
-        // Remove the last character if it is 's'
         if (camelCase.endsWith('s')) {
             camelCase = camelCase.slice(0, -1);
         }
@@ -39,8 +43,12 @@ $this->registerJs("
         return camelCase;
     }
 ");
+?>
 
-echo $form->field($generator, 'tableName');
+<div style="position:relative;">
+    <?= $form->field($generator, 'tableName')->textInput(['style' => 'padding-right: 30px;']) ?>
+    <button type="button" id="clear-button" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); background: transparent; border: none;">X</button>
+</div>
 echo $form->field($generator, 'tablePrefix');
 echo $form->field($generator, 'modelClass');
 echo $form->field($generator, 'ns');
