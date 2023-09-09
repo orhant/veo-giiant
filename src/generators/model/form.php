@@ -44,8 +44,14 @@ $this->registerJs("
     }
 ");
 ?>
-<?= $form->field($generator, 'tableName') ?>
-<button type="button" id="clear-button">Clear</button>
+<div class="input-group">
+    <?= $form->field($generator, 'tableName')->textInput(['class' => 'form-control']) ?>
+    <div class="input-group-append">
+        <button type="button" id="clear-icon" class="btn btn-outline-secondary">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+</div>
 <?php
 echo $form->field($generator, 'tablePrefix');
 echo $form->field($generator, 'modelClass');
