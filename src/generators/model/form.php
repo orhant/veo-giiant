@@ -12,6 +12,8 @@ use schmunk42\giiant\helpers\SaveForm;
  * on chenging listbox, form fill with selected saved forma data
  * currently work with input text, input checkbox and select form fields
  */
+<?php $this->registerCssFile("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"); ?>
+
 $this->registerJs(SaveForm::getSavedFormsJs($generator->getName(), $generator->giiInfoPath), yii\web\View::POS_END);
 $this->registerJs(SaveForm::jsFillForm(), yii\web\View::POS_END);
 echo $form->field($generator, 'savedForm')->dropDownList(
