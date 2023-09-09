@@ -43,13 +43,8 @@ $this->registerJs("
         return camelCase;
     }
 ");
-?>
-
-<div style="position:relative;">
-    <?= $form->field($generator, 'tableName')->textInput(['style' => 'padding-right: 30px;']) ?>
-    <button type="button" id="clear-button" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); background: transparent; border: none;">X</button>
-</div>
-<?php
+<?= $form->field($generator, 'tableName') ?>
+<button type="button" id="clear-button">Clear</button>
 echo $form->field($generator, 'tablePrefix');
 echo $form->field($generator, 'modelClass');
 echo $form->field($generator, 'ns');
