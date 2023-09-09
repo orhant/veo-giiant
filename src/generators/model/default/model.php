@@ -20,7 +20,7 @@ use yii\helpers\StringHelper;
  */
 function generateTableName($tableName, $generator)
 {
-    Yii::$app->get($generator->db, false);
+
 
     $db = Yii::$app->get($generator->db, false);
     if (preg_match("/^{$db->tablePrefix}(.*?)$/", $tableName, $matches)) {
