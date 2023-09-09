@@ -43,8 +43,10 @@ $this->registerJs("
         return camelCase;
     }
 ");
+?>
 <?= $form->field($generator, 'tableName') ?>
 <button type="button" id="clear-button">Clear</button>
+<?php
 echo $form->field($generator, 'tablePrefix');
 echo $form->field($generator, 'modelClass');
 echo $form->field($generator, 'ns');
