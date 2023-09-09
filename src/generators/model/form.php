@@ -29,10 +29,16 @@ $this->registerJs("
         var camelCase = str.replace(/_./g, function(match) {
             return match.charAt(1).toUpperCase();
         });
-        return camelCase.charAt(0).toUpperCase() + camelCase.slice(1);
+        camelCase = camelCase.charAt(0).toUpperCase() + camelCase.slice(1);
+        
+        // Remove the last character if it is 's'
+        if (camelCase.endsWith('s')) {
+            camelCase = camelCase.slice(0, -1);
+        }
+        
+        return camelCase;
     }
 ");
-?>
 
 echo $form->field($generator, 'tableName');
 echo $form->field($generator, 'tablePrefix');
