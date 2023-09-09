@@ -47,7 +47,10 @@ $this->registerJs("
 ");
 ?>
 <div class="input-group">
-    <?= $form->field($generator, 'tableName')->textInput(['class' => 'form-control']) ?>
+    <?= $form->field($generator, 'tableName',[
+            'template' => '{beginLabel}{labelTitle}{endLabel}<div class="input-group">{input}
+            <span class="input-group-addon">%</span></div>{error}{hint}'
+        ])->textInput(['class' => 'form-control']) ?>
     <div class="input-group-append">
         <button type="button" id="clear-icon" class="btn btn-outline-secondary">
             <i class="fas fa-times"></i>
