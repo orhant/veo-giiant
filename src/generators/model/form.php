@@ -18,6 +18,22 @@ echo $form->field($generator, 'savedForm')->dropDownList(
         SaveForm::getSavedFormsListbox($generator->getName() , $generator->giiInfoPath), ['onchange' => 'fillForm(this.value)']
 );
 
+$this->registerJs("
+    $('#generator-tablename').on('change', function() {
+        var tableName = $(this).val();
+        var modelClass = toCamelCase(tableName);
+        $('#generator-modelclass').val(modelClass);
+    });
+
+    function toCamelCase(str) {
+        var camelCase = str.replace(/_./g, function(match) {
+            return match.charAt(1).toUpperCase();
+        });
+        return camelCase.charAt(0).toUpperCase() + camelCase.slice(1);
+    }
+");
+?>
+
 echo $form->field($generator, 'tableName');
 echo $form->field($generator, 'tablePrefix');
 echo $form->field($generator, 'modelClass');
