@@ -48,10 +48,12 @@ $this->registerJs("
     }
 ");
 
+
+
 echo $form->field($generator, 'tableName', [
-    'template' => '{label}<div style="display: flex!important;"><div style="width:100%" class="pl-0 mr-auto">{input}</div><div class="pl-1"><span class="input-group-append"><button type="button" id="clear-icon" class="btn btn-outline-secondary"><i class="fas fa-times"></i></button></span>{error}</div></div>',
+    'template' => '{label}<div style="display: flex!important;"><div style="width:100%" class="pl-0 mr-auto">{input}{list}</div><div class="pl-1"><span class="input-group-append"><button type="button" id="clear-icon" class="btn btn-outline-secondary"><i class="fas fa-times"></i></button></span>{error}</div></div>',
     'options' => ['class' => 'form-group'],
-])->textInput(['class' => 'form-control']);
+]);
 echo $form->field($generator, 'tablePrefix');
 echo $form->field($generator, 'modelClass');
 echo $form->field($generator, 'ns');
